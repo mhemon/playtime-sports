@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.my-container{
+    @apply mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl
+  }
+
+.navbar a {
+    background-color: transparent;
+}
+
+.navbar a.active {
+    color: black;
+    font-weight: bold;
+}
+
+/* For dark mode */
+.dark-mode a.active {
+    color: white;
+    font-weight: bold;
+}
