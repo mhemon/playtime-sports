@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import sun from '../../../assets/icons/sun.png'
 import moon from '../../../assets/icons/moon.png'
-import { AttentionSeeker } from 'react-awesome-reveal';
+import { AttentionSeeker, Fade, Slide } from 'react-awesome-reveal';
 
 const Navbar = () => {
 
@@ -27,14 +27,15 @@ const Navbar = () => {
     }, [theme]);
 
     const navItems = <>
+        <AttentionSeeker effect='flash'>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        </AttentionSeeker>
     </>
     return (
-        <AttentionSeeker effect='pulse'>
-            <div className={`navbar fixed z-10 bg-base-100 ${theme === 'dark' ? 'dark-mode' : ''}`}>
+            <div className={`navbar sticky z-10 bg-base-100 ${theme === 'dark' ? 'dark-mode' : ''}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -69,7 +70,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </AttentionSeeker>
     );
 };
 

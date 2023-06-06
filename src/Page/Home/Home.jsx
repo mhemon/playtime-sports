@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
-        <div className='pt-16'>
+        <div>
             <Helmet>
                 <title>PlayTime Sports | Home</title>
             </Helmet>
