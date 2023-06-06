@@ -10,7 +10,7 @@ import slide5 from '../../assets/Banner/temp5.png'
 
 const Banner = () => {
     return (
-        <Carousel interval={2000} transitionTime={500} infiniteLoop={true} showArrows={true} showStatus={false} autoPlay={true} showThumbs={false} dynamicHeight={false}>
+        <Carousel interval={2000} transitionTime={500} infiniteLoop={true} showArrows={true} showStatus={false} autoPlay={true} showThumbs={false} dynamicHeight={false} className='z-10'>
             <div>
                 <img src={slide1} />
                 <p className="legend">Empowered Women Conquer the Field!</p>
