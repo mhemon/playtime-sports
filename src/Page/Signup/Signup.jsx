@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import { BallTriangle } from 'react-loader-spinner'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Signup = () => {
     const { createUser } = useAuth()
@@ -39,7 +40,7 @@ const Signup = () => {
         const email = data.email
         const password = data.password
         const name = data.name || 'anonymous'
-        const photoURL = data.photoURL || 'https://i.ibb.co/kKkfS1G/user.png'
+        const photoURL = data.photoURL || 'https://i.ibb.co/9T2XqZ3/user-1.png'
         createUser(email, password)
             .then(result => {
                 updateProfile(result.user, {
@@ -106,7 +107,7 @@ const Signup = () => {
                         <Lottie animationData={loginAnimation} loop={true} />;
                     </div>
                     <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-[10px]">
                             <h3 className='text-3xl text-center font-semibold'>Please Signup</h3>
                             <div className="form-control">
                                 <label className="label">
@@ -157,7 +158,7 @@ const Signup = () => {
                             </div>
                             <Link to='/login'><p className='text-center'>Alreday have an account? Login</p></Link>
                         </form>
-                        {/* <SocialLogin /> */}
+                        <SocialLogin />
                     </div>
                 </div>
             </div>

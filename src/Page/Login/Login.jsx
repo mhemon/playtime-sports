@@ -1,18 +1,57 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/anim/login.json";
 import useAuth from '../../hook/useAuth';
+import Swal from 'sweetalert2';
+import { BallTriangle } from 'react-loader-spinner';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
-    const { createUser } = useAuth()
+    const { loginUser } = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showpass, setShowPass] = useState(false)
+    const [loading, setLoading] = useState(false)
+
+    if (loading) {
+        return <div className='flex justify-center items-center'>
+            <BallTriangle
+                height={100}
+                width={100}
+                radius={5}
+                color="#4fa94d"
+                ariaLabel="ball-triangle-loading"
+                wrapperClass={{}}
+                wrapperStyle=""
+                visible={true}
+            />
+        </div>
+    }
+
     const onSubmit = data => {
-        console.log(data);
+        setLoading(true)
+        const email = data.email
+        const password = data.password
+        loginUser(email, password)
+        .then(() => {
+            setLoading(false)
+            navigate(from, { replace: true });
+        })
+        .catch(error => {
+            setLoading(false)
+            console.error(error)
+            Swal.fire({
+                icon: 'error',
+                title: `${error.code}`,
+                text: `${error.message}`
+            })
+        })
     };
     return (
         <div>
@@ -26,7 +65,7 @@ const Login = () => {
                         <Lottie animationData={loginAnimation} loop={true} />;
                     </div>
                     <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-[10px]">
                             <h3 className='text-3xl text-center font-semibold'>Please Login</h3>
                             <div className="form-control">
                                 <label className="label">
@@ -50,7 +89,7 @@ const Login = () => {
                             </div>
                             <Link to='/signup'><p className='text-center'>Don't have an account? Signup</p></Link>
                         </form>
-                        {/* <SocialLogin /> */}
+                        <SocialLogin />
                     </div>
                 </div>
             </div>
