@@ -2,7 +2,7 @@ import React from 'react';
 
 const Instructors = () => {
     return (
-        <div className='bg-white'>
+        <div>
             <p>Instructor page</p>
         </div>
     );
