@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/anim/login.json";
+import useAuth from '../../hook/useAuth';
 
 const Login = () => {
+    const { createUser } = useAuth()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [showpass, setShowPass] = useState(false)
     const onSubmit = data => {
@@ -21,11 +23,11 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center hidden md:block md:w-1/2 max-w-lg">
-                    <Lottie animationData={loginAnimation} loop={true} />;
+                        <Lottie animationData={loginAnimation} loop={true} />;
                     </div>
                     <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                        <h3 className='text-3xl text-center font-semibold'>Please Login</h3>
+                            <h3 className='text-3xl text-center font-semibold'>Please Login</h3>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -43,10 +45,10 @@ const Login = () => {
                                 </div>
                                 {errors.password?.type === 'required' && <span className='text-red-600'>Password is required</span>}
                             </div>
-                            <div className="form-control">
+                            <div className="form-control mt-2">
                                 <button type='submit' className="btn my-custom-btn">Login</button>
                             </div>
-                            <Link to='/signup'><p className='text-center'>Dont have an account? Signup</p></Link>
+                            <Link to='/signup'><p className='text-center'>Don't have an account? Signup</p></Link>
                         </form>
                         {/* <SocialLogin /> */}
                     </div>
