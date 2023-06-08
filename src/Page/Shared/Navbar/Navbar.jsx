@@ -8,9 +8,11 @@ import Swal from 'sweetalert2';
 import { FaSignOutAlt } from 'react-icons/fa'
 import useAdmin from '../../../hook/useAdmin';
 import useInstructor from '../../../hook/useInstructor';
+import useCart from '../../../hook/useCart';
 
 const Navbar = () => {
     const { user, logout } = useAuth()
+    const [cart] = useCart()
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
     const navigate = useNavigate()
@@ -72,7 +74,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Fade cascade direction='left'>
-                <Link to='/' className="btn btn-ghost normal-case text-xl single-line-text">PlayTime Sports</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl single-line-text">PlayTime Sports</Link>
                 </Fade>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -83,11 +85,21 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user && <>
                     <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                        <div className="avatar hidden md:block">
-                            <div className=" w-10 me-2 rounded-full">
-                                <img src={user?.photoURL} />
+                        <Link to={isAdmin ? '/dashboard/adminhome' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}><div className="avatar hidden md:block">
+                            <div className="relative">
+                                {cart.length > 0 && (
+                                    <div className="absolute -bottom-3 -left-2 transform translate-x-1/2 -translate-y-1/2">
+                                        <span className="inline-flex items-center justify-center w-4 h-4 bg-red-500 text-white rounded-full text-xs">
+                                            {cart.length}
+                                        </span>
+                                    </div>
+                                )}
+                                <div className="w-10 me-2 rounded-full overflow-hidden">
+                                    <img src={user?.photoURL} alt="User Avatar" />
+                                </div>
                             </div>
                         </div>
+                        </Link>
                     </div>
                     <div className='tooltip tooltip-bottom' data-tip="Logout">
                         <button onClick={handleLogout} className="btn btn-square btn-ghost w-12 h-12">
