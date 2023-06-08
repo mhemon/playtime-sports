@@ -72,7 +72,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Fade cascade direction='left'>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">PlayTime Sports</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl single-line-text">PlayTime Sports</Link>
                 </Fade>
             </div>
             <div className="navbar-center hidden lg:flex">

@@ -32,3 +32,9 @@
 .drawer-side a:hover {
     color: black;
 }
+
+.single-line-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

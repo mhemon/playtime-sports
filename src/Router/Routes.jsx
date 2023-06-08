@@ -10,6 +10,7 @@ import InstructorHome from "../Page/InstructorHome/InstructorHome";
 import Dashboard from "./Dashboard";
 import SelectedClasses from "../Page/SelectedClasses/SelectedClasses";
 import AdminHome from "../Page/AdminHome/AdminHome";
+import Classes from "../Page/Classes/Classes";
 
 export const router = createBrowserRouter(
   [
@@ -23,6 +24,10 @@ export const router = createBrowserRouter(
       {
         path: '/instructors',
         element: <Instructors/>
+      },
+      {
+        path: '/classes',
+        element: <Classes/>
       },
       {
         path: '/login',
