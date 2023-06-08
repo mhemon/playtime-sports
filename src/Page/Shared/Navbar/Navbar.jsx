@@ -52,13 +52,13 @@ const Navbar = () => {
     }
 
     const navItems = <>
-        <AttentionSeeker effect='flash'>
+        <Fade cascade duration={500}>
             <li><NavLink to='/'>Home</NavLink></li>
             <li><NavLink to='/instructors'>Instructors</NavLink></li>
             <li><NavLink to='/classes'>Classes</NavLink></li>
-            {user && <li><NavLink to={isAdmin ? '/adminhome' : isInstructor ? '/instructorhome' : '/studenthome'}>Dashboard</NavLink></li>}
+            {user && <li><NavLink to={isAdmin ? '/dashboard/adminhome' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}>Dashboard</NavLink></li>}
             {!user && <li><NavLink to='/login'>Login</NavLink></li>}
-        </AttentionSeeker>
+        </Fade>
     </>
     return (
         <div className={`navbar sticky z-10 bg-base-100 ${theme === 'dark' ? 'dark-mode' : ''}`}>
@@ -71,7 +71,9 @@ const Navbar = () => {
                         {navItems}
                     </ul>
                 </div>
+                <Fade cascade direction='left'>
                 <Link to='/' className="btn btn-ghost normal-case text-xl">PlayTime Sports</Link>
+                </Fade>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

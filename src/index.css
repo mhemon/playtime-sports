@@ -28,3 +28,7 @@
     color: white;
     font-weight: bold;
 }
+
+.drawer-side a:hover {
+    color: black;
+}
