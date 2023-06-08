@@ -7,7 +7,7 @@ import Instructors from "../Page/Instructors/Instructors";
 import Login from "../Page/Login/Login";
 import Signup from "../Page/Signup/Signup";
 import InstructorHome from "../Page/InstructorHome/InstructorHome";
-import Dashboard from "./Dashboard";
+import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Page/SelectedClasses/SelectedClasses";
 import AdminHome from "../Page/AdminHome/AdminHome";
 import Classes from "../Page/Classes/Classes";

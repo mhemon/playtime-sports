@@ -23,7 +23,7 @@ const Instructors = () => {
             <h3 className='text-center text-2xl font-semibold'>Total instructors: {instructors.length}</h3>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 p-2 mx-auto'>
                 {
-                    instructors.map(instractor => <div className="card w-full lg:w-96 bg-base-100 shadow-xl" key={instractor._id}>
+                    instructors.map(instractor => <div className="card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden" key={instractor._id}>
                         <Fade cascade>
                             <figure className='relative h-52'>
                                 <img src={instractor.image} alt="Class" />
