@@ -9,11 +9,12 @@ import Signup from "../Page/Signup/Signup";
 import InstructorHome from "../Page/InstructorHome/InstructorHome";
 import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Page/SelectedClasses/SelectedClasses";
-import AdminHome from "../Page/AdminHome/AdminHome";
 import Classes from "../Page/Classes/Classes";
 import Payment from "../Components/Payment/Payment";
 import PaymentHistory from "../Page/PaymentHistory/PaymentHistory";
 import EnrolledClasses from "../Page/EnrolledClasses/EnrolledClasses";
+import ManageClasses from "../Page/ManageClasses/ManageClasses";
+import ManageUsers from "../Page/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter(
   [
@@ -47,8 +48,12 @@ export const router = createBrowserRouter(
       element: <Dashboard/>,
       children: [
         {
-          path: 'adminhome',
-          element: <AdminHome/>
+          path: 'manage-classes',
+          element: <ManageClasses/>
+        },
+        {
+          path: 'manage-users',
+          element: <ManageUsers/>
         },
         {
           path: 'instructorhome',

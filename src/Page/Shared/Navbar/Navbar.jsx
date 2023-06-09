@@ -11,14 +11,11 @@ import useInstructor from '../../../hook/useInstructor';
 import useCart from '../../../hook/useCart';
 
 const Navbar = () => {
-    const { user, logout } = useAuth()
+    const { user, logout, theme, setTheme } = useAuth()
     const [cart] = useCart()
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
     const navigate = useNavigate()
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-    );
 
     // update state on toggle
     const handleToggle = (e) => {
@@ -58,7 +55,7 @@ const Navbar = () => {
             <li><NavLink to='/'>Home</NavLink></li>
             <li><NavLink to='/instructors'>Instructors</NavLink></li>
             <li><NavLink to='/classes'>Classes</NavLink></li>
-            {user && <li><NavLink to={isAdmin ? '/dashboard/adminhome' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}>Dashboard</NavLink></li>}
+            {user && <li><NavLink to={isAdmin ? '/dashboard/manage-users' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}>Dashboard</NavLink></li>}
             {!user && <li><NavLink to='/login'>Login</NavLink></li>}
         </Fade>
     </>

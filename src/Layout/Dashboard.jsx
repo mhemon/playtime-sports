@@ -38,8 +38,8 @@ const Dashboard = () => {
                     <div className='lg:divider'></div>
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/allusers"><ImUsers /> All users</NavLink></li>
+                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manage-users"><ImUsers /> Manage Users</NavLink></li>
                         </> : isInstructor ? <>
                             <li><NavLink to="/dashboard/instructorhome"><FaHome></FaHome> Instructor Home</NavLink></li>
                         </> : <>
@@ -50,8 +50,8 @@ const Dashboard = () => {
                     }
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
-                    <li><NavLink to="/"><GiTeacher /> Instructors</NavLink> </li>
-                    <li><NavLink to="/"><SiGoogleclassroom /> Classes</NavLink> </li>
+                    <li><NavLink to="/instructors"><GiTeacher /> Instructors</NavLink> </li>
+                    <li><NavLink to="/classes"><SiGoogleclassroom /> Classes</NavLink> </li>
                 </ul>
 
             </div>

@@ -3,8 +3,10 @@ import useAxiosSecure from '../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Fade } from 'react-awesome-reveal';
 import Loading from '../../Components/Loading/Loading';
+import useAuth from '../../hook/useAuth';
 
 const Instructors = () => {
+    const {theme} = useAuth()
     const [axiosSecure] = useAxiosSecure();
     const { isLoading, refetch, data: instructors = [] } = useQuery({
         queryKey: ['instructors'],
@@ -24,7 +26,7 @@ const Instructors = () => {
             <h3 className='text-center text-2xl font-semibold'>Total instructors: {instructors.length}</h3>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 p-2 mx-auto'>
                 {
-                    instructors.map(instractor => <div className="card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden" key={instractor._id}>
+                    instructors.map(instractor => <div className={`card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden ${theme === 'dark' && 'bg-slate-700'}`} key={instractor._id}>
                         <Fade cascade>
                             <figure className='relative h-52'>
                                 <img src={instractor.image} alt="Class" />
