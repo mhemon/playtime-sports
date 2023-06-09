@@ -3,6 +3,7 @@ import useCart from '../../hook/useCart';
 import { AiTwotoneDelete } from "react-icons/ai";
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
     const [cart, refetch] = useCart()
@@ -81,7 +82,7 @@ const SelectedClasses = () => {
                 </table>
             </div>
             <div className={`text-center mt-4 ${!totalPrice && 'hidden'}`}>
-                <button className='w-[200px] btn my-custom-btn'>Pay: ${totalPrice}</button>
+                <Link to='/dashboard/payment'><button className='w-[200px] btn my-custom-btn'>Pay: ${totalPrice}</button></Link>
             </div>
         </div>
     );

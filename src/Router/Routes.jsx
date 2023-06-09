@@ -11,6 +11,8 @@ import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Page/SelectedClasses/SelectedClasses";
 import AdminHome from "../Page/AdminHome/AdminHome";
 import Classes from "../Page/Classes/Classes";
+import Payment from "../Components/Payment/Payment";
+import PaymentHistory from "../Page/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter(
   [
@@ -54,6 +56,14 @@ export const router = createBrowserRouter(
         {
           path: 'selected-classes',
           element: <SelectedClasses/>
+        },
+        {
+          path: 'payment',
+          element: <Payment/>
+        },
+        {
+          path: 'payment-history',
+          element: <PaymentHistory/>
         }
     ]
     }
