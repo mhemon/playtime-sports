@@ -6,21 +6,30 @@ import useCart from '../../hook/useCart';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hook/useAuth';
+import useEnrolled from '../../hook/useEnrolled';
+import Loading from '../../Components/Loading/Loading';
 
 const Classes = () => {
     const [axiosSecure] = useAxiosSecure()
     const [cart, refetch] = useCart()
+    const [enrolledClass] = useEnrolled()
     const navigate = useNavigate()
     const {user} = useAuth()
-    const { data: classes = [] } = useQuery({
+    const { data: classes = [], isLoading } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
             const res = await axiosSecure('/classes')
             return res.data
         }
     })
+
+    if(isLoading){
+        return <Loading/>
+    }
     
     const cartID = cart.map(item => item.classItemID)
+    const enrolID = enrolledClass.map(item => item.classItemID)
+    const flattenedEnrolID = [].concat(...enrolID);
     const handleBtnClick = (item) => {
         if(user && user.email){
             const classItem =  { classItemID: item._id, name: item.name, image: item.image, price: item.price, email: user.email }
@@ -66,10 +75,10 @@ const Classes = () => {
                             </Fade>
                         <div className="card-body">
                         <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Taken By:- {classItem.instructor_name}</h2>
-                            <h2 className="card-title">{classItem.name}</h2>
+                            <h2 className="card-title">{classItem.name} <span className={!flattenedEnrolID.includes(classItem._id) ? 'hidden' : 'badge badge-secondary'}>Enrolled</span></h2>
                             <p>Seat Left : {classItem.available_seats}</p>
                             <div className="card-actions justify-end">
-                                <button disabled={cartID.includes(classItem._id)} onClick={() => handleBtnClick(classItem)} className="btn my-custom-btn">Add to Select</button>
+                                <button disabled={cartID.includes(classItem._id) || flattenedEnrolID.includes(classItem._id)} onClick={() => handleBtnClick(classItem)} className="btn my-custom-btn">Add to Select</button>
                             </div>
                         </div>
                     </div>)

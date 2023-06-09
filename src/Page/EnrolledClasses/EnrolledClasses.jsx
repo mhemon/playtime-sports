@@ -1,22 +1,12 @@
-import React from 'react';
-import useAuth from '../../hook/useAuth';
-import useAxiosSecure from '../../hook/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
 import ClassCard from '../Shared/ClassCard/ClassCard';
+import Loading from '../../Components/Loading/Loading';
+import useEnrolled from '../../hook/useEnrolled';
 
 const EnrolledClasses = () => {
-    const {user} = useAuth()
-    const [axiosSecure] = useAxiosSecure()
-    const {data: enrolledClass = [], isLoading} = useQuery({
-        queryKey: ['enrolled-classes', user?.email],
-        queryFn: async () =>{
-            const res = await axiosSecure(`/enrolled-classes?email=${user?.email}`)
-            return res.data
-        }
-    })
+    const [enrolledClass,,isLoading]= useEnrolled()
 
     if(isLoading){
-        return <p>Loading....</p>
+        return <Loading/>
     }
    
     return (

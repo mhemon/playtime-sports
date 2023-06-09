@@ -86,12 +86,12 @@ const CheckoutFrom = ({ cart, price }) => {
                 date: new Date(),
                 status: 'enrolled',
                 cartItems: cart.map(item => item._id),
+                classItemID: cart.map(item => item.classItemID),
                 classNames: cart.map(item => item.name),
                 classImage: cart.map(item => item.image),
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
-                    console.log(res.data);
                     if (res.data.insertResult && res.data.deleteResult) {
                         navigate('/dashboard/payment-history')
                         Swal.fire({

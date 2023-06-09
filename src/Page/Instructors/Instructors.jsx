@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Fade } from 'react-awesome-reveal';
+import Loading from '../../Components/Loading/Loading';
 
 const Instructors = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -14,7 +15,7 @@ const Instructors = () => {
     });
 
     if (isLoading) {
-        return <span>Loading...</span>
+        return <Loading/>
     }
 
 
