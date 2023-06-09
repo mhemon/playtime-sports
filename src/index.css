@@ -13,6 +13,9 @@
 .navbar a {
     background-color: transparent;
 }
+.drawer-side a {
+    background-color: transparent;
+}
 
 .input {
     height: 2.5em;
@@ -23,14 +26,15 @@
     font-weight: bold;
 }
 
+.drawer-side a.active {
+    font-weight: bold;
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-white
+}
+
 /* For dark mode */
 .dark-mode a.active {
     color: white;
     font-weight: bold;
-}
-
-.drawer-side a:hover {
-    color: black;
 }
 
 .single-line-text {

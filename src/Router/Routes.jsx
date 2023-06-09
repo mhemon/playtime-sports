@@ -13,6 +13,7 @@ import AdminHome from "../Page/AdminHome/AdminHome";
 import Classes from "../Page/Classes/Classes";
 import Payment from "../Components/Payment/Payment";
 import PaymentHistory from "../Page/PaymentHistory/PaymentHistory";
+import EnrolledClasses from "../Page/EnrolledClasses/EnrolledClasses";
 
 export const router = createBrowserRouter(
   [
@@ -64,6 +65,10 @@ export const router = createBrowserRouter(
         {
           path: 'payment-history',
           element: <PaymentHistory/>
+        },
+        {
+          path: 'enrolled-classes',
+          element: <EnrolledClasses/>
         }
     ]
     }
