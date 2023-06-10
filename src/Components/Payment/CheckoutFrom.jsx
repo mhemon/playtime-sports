@@ -79,6 +79,7 @@ const CheckoutFrom = ({ cart, price }) => {
         if (paymentIntent.status === 'succeeded') {
             const transactionID = paymentIntent.id
             setTransaction(transactionID)
+            const classItemID = cart.map(item => item.classItemID)
             const payment = {
                 email: user?.email,
                 transactionId: transactionID,
@@ -86,21 +87,28 @@ const CheckoutFrom = ({ cart, price }) => {
                 date: new Date(),
                 status: 'enrolled',
                 cartItems: cart.map(item => item._id),
-                classItemID: cart.map(item => item.classItemID),
+                classItemID,
                 classNames: cart.map(item => item.name),
                 classImage: cart.map(item => item.image),
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     if (res.data.insertResult && res.data.deleteResult) {
-                        navigate('/dashboard/payment-history')
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Payment Completed Successfully!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                        // TODO:please add +1 on enrolled and remove 1 from available seat
+                        axiosSecure.patch('/classes-update-enroll', classItemID)
+                            .then(res => {
+                                if (res.data.modifiedCount > 0) {
+                                    navigate('/dashboard/payment-history')
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Payment Completed Successfully!',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                }
+
+                            })
                     }
                 })
         }

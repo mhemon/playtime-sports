@@ -8,11 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hook/useAuth';
 import useEnrolled from '../../hook/useEnrolled';
 import Loading from '../../Components/Loading/Loading';
+import useAdmin from '../../hook/useAdmin';
+import useInstructor from '../../hook/useInstructor';
 
 const Classes = () => {
     const [axiosSecure] = useAxiosSecure()
     const [cart, refetch] = useCart()
     const [enrolledClass] = useEnrolled()
+    const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
     const navigate = useNavigate()
     const {user, theme} = useAuth()
     const { data: classes = [], isLoading } = useQuery({
@@ -66,7 +70,7 @@ const Classes = () => {
             <h3 className='text-center text-2xl font-semibold'>Total Classes: {classes.length}</h3>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 p-2 mx-auto'>
                 {
-                    classes.map(classItem => <div className={`card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden ${theme === 'dark' && 'bg-slate-700'}`} key={classItem._id}>
+                    classes.map(classItem => <div className={`card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden ${theme === 'dark' && 'bg-slate-700'} ${classItem.available_seats <= 0 && 'bg-red-500'}`} key={classItem._id}>
                         <Fade cascade>
                         <figure className='relative h-52'>
                         <div className={`badge absolute top-4 right-2 text-lg ${theme === 'light' && 'badge-secondary'}`}>${classItem.price}</div>
@@ -78,7 +82,7 @@ const Classes = () => {
                             <h2 className="card-title">{classItem.name} <span className={!flattenedEnrolID.includes(classItem._id) ? 'hidden' : `${theme === 'light' ? 'badge badge-secondary' : 'badge badge-neutral'}`}>Enrolled</span></h2>
                             <p>Seat Left : {classItem.available_seats}</p>
                             <div className="card-actions justify-end">
-                                <button disabled={cartID.includes(classItem._id) || flattenedEnrolID.includes(classItem._id)} onClick={() => handleBtnClick(classItem)} className={`btn ${theme === 'light' && 'my-custom-btn'}`}>Add to Select</button>
+                                <button disabled={cartID.includes(classItem._id) || flattenedEnrolID.includes(classItem._id) || isAdmin || isInstructor || classItem.available_seats <= 0} onClick={() => handleBtnClick(classItem)} className={`btn ${theme === 'light' && 'my-custom-btn'}`}>Add to Select</button>
                             </div>
                         </div>
                     </div>)
