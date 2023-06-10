@@ -41,7 +41,8 @@ const Dashboard = () => {
                             <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manage-users"><ImUsers /> Manage Users</NavLink></li>
                         </> : isInstructor ? <>
-                            <li><NavLink to="/dashboard/instructorhome"><FaHome></FaHome> Instructor Home</NavLink></li>
+                            <li><NavLink to="/dashboard/my-classes"><FaHome></FaHome> My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/add-classes"><FaHome></FaHome> Add Classes</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/selected-classes"><SiGoogleclassroom /> Selected Classes</NavLink></li>
                             <li><NavLink to="/dashboard/enrolled-classes"><SiGoogleclassroom /> Enrolled Classes</NavLink></li>

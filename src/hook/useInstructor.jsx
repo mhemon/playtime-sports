@@ -10,8 +10,7 @@ const useInstructor = () => {
         queryKey: ['isInstructor', user?.email],
         enabled: !loading, 
         queryFn: async () => {
-        const res = await axiosSecure(`/users/admin/${user?.email}`)
-        console.log('res from instructor ',res);
+        const res = await axiosSecure(`check-instructor?email=${user?.email}`)
         return res.data.instructor
     }})
     return [isInstructor, isInstructorLoading]

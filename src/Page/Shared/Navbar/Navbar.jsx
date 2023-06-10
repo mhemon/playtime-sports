@@ -55,7 +55,7 @@ const Navbar = () => {
             <li><NavLink to='/'>Home</NavLink></li>
             <li><NavLink to='/instructors'>Instructors</NavLink></li>
             <li><NavLink to='/classes'>Classes</NavLink></li>
-            {user && <li><NavLink to={isAdmin ? '/dashboard/manage-users' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}>Dashboard</NavLink></li>}
+            {user && <li><NavLink to={isAdmin ? '/dashboard/manage-users' : isInstructor ? '/dashboard/my-classes' : '/dashboard/selected-classes'}>Dashboard</NavLink></li>}
             {!user && <li><NavLink to='/login'>Login</NavLink></li>}
         </Fade>
     </>
@@ -82,7 +82,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user && <>
                     <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                        <Link to={isAdmin ? '/dashboard/adminhome' : isInstructor ? '/dashboard/instructorhome' : '/dashboard/selected-classes'}><div className="avatar hidden md:block">
+                        <Link to={isAdmin ? '/dashboard/manage-users' : isInstructor ? '/dashboard/my-classes' : '/dashboard/selected-classes'}><div className="avatar hidden md:block">
                             <div className="relative">
                                 {cart.length > 0 && (
                                     <div className="absolute -bottom-3 -left-2 transform translate-x-1/2 -translate-y-1/2">

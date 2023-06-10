@@ -6,7 +6,6 @@ import Home from "../Page/Home/Home";
 import Instructors from "../Page/Instructors/Instructors";
 import Login from "../Page/Login/Login";
 import Signup from "../Page/Signup/Signup";
-import InstructorHome from "../Page/InstructorHome/InstructorHome";
 import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Page/SelectedClasses/SelectedClasses";
 import Classes from "../Page/Classes/Classes";
@@ -15,6 +14,8 @@ import PaymentHistory from "../Page/PaymentHistory/PaymentHistory";
 import EnrolledClasses from "../Page/EnrolledClasses/EnrolledClasses";
 import ManageClasses from "../Page/ManageClasses/ManageClasses";
 import ManageUsers from "../Page/ManageUsers/ManageUsers";
+import MyClasses from "../Page/MyClasses/MyClasses";
+import AddClasses from "../Page/AddClasses/AddClasses";
 
 export const router = createBrowserRouter(
   [
@@ -56,8 +57,12 @@ export const router = createBrowserRouter(
           element: <ManageUsers/>
         },
         {
-          path: 'instructorhome',
-          element: <InstructorHome/>
+          path: 'my-classes',
+          element: <MyClasses/>
+        },
+        {
+          path: 'add-classes',
+          element: <AddClasses/>
         },
         {
           path: 'selected-classes',
