@@ -26,15 +26,15 @@ const Instructors = () => {
             <h3 className='text-center text-2xl font-semibold'>Total instructors: {instructors.length}</h3>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 p-2 mx-auto'>
                 {
-                    instructors.map(instractor => <div className={`card w-full lg:w-96 bg-base-100 shadow-xl overflow-hidden ${theme === 'dark' && 'bg-slate-700'}`} key={instractor._id}>
+                    instructors.map(instractor => <div className={`card w-full lg:w-72 bg-base-100 shadow-xl overflow-hidden border-2 ${theme === 'dark' && 'bg-slate-700'}`} key={instractor._id}>
                         <Fade cascade>
-                            <figure className='relative h-52'>
-                                <img src={instractor.image} alt="Class" />
+                            <figure className='relative h-52 mt-2'>
+                                <img className='border-l-8 border-b-8 border-orange-300 rounded-lg' src={instractor.image} alt="Class" />
                             </figure>
                         </Fade>
                         <div className="card-body">
                             <h2 className="card-title">{instractor.name}</h2>
-                            <p>Email : {instractor.Email}</p>
+                            <p>Email : {instractor.email}</p>
                         </div>
                     </div>)
                 }

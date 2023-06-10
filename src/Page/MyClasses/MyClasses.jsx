@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hook/useAuth';
 import Loading from '../../Components/Loading/Loading';
 import { Fade } from 'react-awesome-reveal';
+import Swal from 'sweetalert2';
 
 const MyClasses = () => {
     const {user, theme} = useAuth()
@@ -17,6 +18,15 @@ const MyClasses = () => {
     })
     if(isLoading){
         return <Loading/>
+    }
+    const updateBtn = () => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: `update will'be added soon...`,
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
     return (
         <div>
@@ -34,8 +44,14 @@ const MyClasses = () => {
                 <h2 className="tracking-widest text-xs title-font font-medium mb-1">Status:- {classItem.status}</h2>
                 <h3 className='text-base font-semibold'>{classItem.name}</h3>
                     <p>Enrolled : {classItem.enrolled}</p>
-                    {classItem.feedback.length > 0 && <p>Feedback: {classItem.feedback}</p>}
-                    <button className='btn my-custom-btn'>Update</button>
+                    {classItem.feedback.length > 0 && <div className='w-full'>
+                                <p className='text-center text-lg font-semibold'>FeedBack</p>
+                                <div className="divider"></div> 
+                                <div className="chat chat-end">
+                                    <div className="chat-bubble">{classItem.feedback}</div>
+                                </div>
+                            </div>}
+                    <button onClick={() => updateBtn()} className='btn my-custom-btn'>Update</button>
                 </div>
             </div>)
             }

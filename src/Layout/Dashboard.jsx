@@ -38,7 +38,7 @@ const Dashboard = () => {
                     <div className='lg:divider'></div>
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manage-classes"><FaHome></FaHome> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manage-users"><ImUsers /> Manage Users</NavLink></li>
                         </> : isInstructor ? <>
                             <li><NavLink to="/dashboard/my-classes"><FaHome></FaHome> My Classes</NavLink></li>

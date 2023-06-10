@@ -9,6 +9,7 @@ import useAuth from '../../hook/useAuth';
 import Swal from 'sweetalert2';
 import { BallTriangle } from 'react-loader-spinner';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import Loading from '../../Components/Loading/Loading';
 
 const Login = () => {
     const { loginUser } = useAuth()
@@ -20,18 +21,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false)
 
     if (loading) {
-        return <div className='flex justify-center items-center'>
-            <BallTriangle
-                height={100}
-                width={100}
-                radius={5}
-                color="#4fa94d"
-                ariaLabel="ball-triangle-loading"
-                wrapperClass={{}}
-                wrapperStyle=""
-                visible={true}
-            />
-        </div>
+        return <Loading/>
     }
 
     const onSubmit = data => {

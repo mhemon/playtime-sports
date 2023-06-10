@@ -11,6 +11,7 @@ import { updateProfile } from 'firebase/auth';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import { BallTriangle } from 'react-loader-spinner'
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import Loading from '../../Components/Loading/Loading';
 
 const Signup = () => {
     const { createUser } = useAuth()
@@ -22,18 +23,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false)
 
     if (loading) {
-        return <div className='flex justify-center items-center'>
-            <BallTriangle
-                height={100}
-                width={100}
-                radius={5}
-                color="#4fa94d"
-                ariaLabel="ball-triangle-loading"
-                wrapperClass={{}}
-                wrapperStyle=""
-                visible={true}
-            />
-        </div>
+        return <Loading/>
     }
     const onSubmit = data => {
         setLoading(true)
@@ -51,7 +41,8 @@ const Signup = () => {
                         // user create and name update success
                         const updateUser = {
                             name: data.name,
-                            email: data.email
+                            email: data.email,
+                            image: data.photoURL
                         }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
