@@ -6,11 +6,12 @@ import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import { motion } from 'framer-motion';
 import FunFactsSection from '../../Components/FunFactsSection/FunFactsSection';
 import useAuth from '../../hook/useAuth';
+import ContactSection from '../../Components/ContactSection/ContactSection';
 
 const Home = () => {
     const [popularClasses, setPopularClasses] = useState([])
     const [popularInstructor, setPopularInstructor] = useState([])
-    const {theme} = useAuth()
+    const { theme } = useAuth()
     useEffect(() => {
         fetch('http://localhost:5000/popular-classes')
             .then(res => res.json())
@@ -60,7 +61,7 @@ const Home = () => {
                     }
                 </div>
             </section>
-            
+
             {/* popular Instructor */}
             <section>
                 <SectionTitle heading='Popular Instructor' />
@@ -92,7 +93,13 @@ const Home = () => {
                 </div>
             </section>
             {/* fun facts section */}
-            <FunFactsSection/>
+            <section>
+                <FunFactsSection />
+            </section>
+            {/* contact section */}
+            <section>
+                <ContactSection />
+            </section>
         </div>
     );
 };

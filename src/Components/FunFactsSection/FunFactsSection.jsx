@@ -25,7 +25,7 @@ const FunFactsSection = () => {
     };
 
     return (
-        <section className={`card shadow-xl py-8 mx-4 my-4 ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-100'}`}>
+        <section className={`card shadow-md py-8 mx-4 my-4 ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-100'}`}>
             <h2 className="text-2xl font-bold text-center mb-4">Fun Facts</h2>
             {funFacts.length > 0 ? (
                 <>

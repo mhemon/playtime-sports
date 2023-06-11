@@ -6,7 +6,7 @@ import Loading from '../../Components/Loading/Loading';
 import formatDate from '../../utils/DateFormat';
 
 const PaymentHistory = () => {
-    const { user } = useAuth()
+    const { user, theme } = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const {isLoading,data: payment=[]} = useQuery({
         queryKey: ['payment-history', user?.email],
@@ -26,7 +26,7 @@ const PaymentHistory = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className='bg-base-200'>
+                    <thead className={`${theme === 'dark' ? 'bg-slate-700' : 'bg-base-200'}`}>
                         <tr>
                             <th>#</th>
                             <th>Transaction ID</th>
