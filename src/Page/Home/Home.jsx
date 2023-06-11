@@ -69,7 +69,7 @@ const Home = () => {
                     {
                         popularInstructor.map(popular => <motion.div
                             key={popular._id}
-                            className={`card w-full lg:w-96 shadow-xl overflow-hidden ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-100'}`}
+                            className={`card w-full lg:w-96 shadow-xl overflow-hidden border-l-8 border-b-8 border-x-cyan-500 border-y-blue-500 hover:border-x-pink-500 hover:border-y-yellow-500 rounded-lg ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-100'}`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             initial={{ opacity: 0, y: 100 }}
@@ -80,12 +80,12 @@ const Home = () => {
                             <div>
                                 <Fade cascade>
                                     <figure className='relative h-52'>
-                                        <img src={popular.image} alt="Class" />
+                                        <img className='' src={popular.image} alt="Class" />
                                     </figure>
                                 </Fade>
                                 <div className="card-body">
                                     <h2 className="card-title">{popular.name}</h2>
-                                    <p>Total Enrolled : {popular.enrolled}</p>
+                                    {/* <p>Total Enrolled : </p> */}
                                 </div>
                             </div>
                         </motion.div>)

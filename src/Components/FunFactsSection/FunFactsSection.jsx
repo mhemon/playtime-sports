@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../hook/useAuth';
+import { Fade, Slide } from 'react-awesome-reveal';
 
 const FunFactsSection = () => {
     const [funFacts, setFunFacts] = useState([]);
     const [currentFactIndex, setCurrentFactIndex] = useState(0);
-    const {theme} = useAuth()
+    const { theme } = useAuth()
     useEffect(() => {
         // Simulating data retrieval from the server
         const fetchData = async () => {
@@ -28,7 +29,7 @@ const FunFactsSection = () => {
         <section className={`card shadow-md py-8 mx-4 my-4 ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-100'}`}>
             <h2 className="text-2xl font-bold text-center mb-4">Fun Facts</h2>
             {funFacts.length > 0 ? (
-                <>
+                <Fade cascade>
                     <p className="text-lg text-center mb-4 mx-4">
                         Did you know that {' '}
                         {funFacts[currentFactIndex].fact.toLowerCase()}?
@@ -38,7 +39,7 @@ const FunFactsSection = () => {
                             Next Fact
                         </button>
                     </div>
-                </>
+                </Fade>
             ) : (
                 <p>Loading fun facts...</p>
             )}

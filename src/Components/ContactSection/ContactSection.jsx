@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../hook/useAuth';
+import { Fade } from 'react-awesome-reveal';
 
 const ContactSection = () => {
     const [name, setName] = useState('');
@@ -27,6 +28,7 @@ const ContactSection = () => {
 
     return (
         <section className={`py-8 px-4 ${theme === 'dark' ? 'bg-slate-700 my-4' : 'bg-base-100'}`}>
+            <Fade cascade>
             <h2 className="text-2xl font-bold text-center mb-4">Contact</h2>
             <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -79,6 +81,7 @@ const ContactSection = () => {
                     </button>
                 </div>
             </form>
+            </Fade>
         </section>
     );
 };
