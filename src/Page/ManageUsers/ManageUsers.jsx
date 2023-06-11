@@ -3,9 +3,11 @@ import React from 'react';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import Loading from '../../Components/Loading/Loading';
 import Swal from 'sweetalert2';
+import useAuth from '../../hook/useAuth';
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure()
+    const {theme} = useAuth()
     const { data: users = [], isLoading, refetch } = useQuery({
         queryKey: ['manage-users'],
         queryFn: async () => {
@@ -54,9 +56,9 @@ const ManageUsers = () => {
         <div>
             <h3 className='text-2xl font-semibold mb-2'>Total Users : {users.length}</h3>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className='table'>
                     {/* head */}
-                    <thead className='bg-base-200'>
+                    <thead className={`${theme === 'dark' ? 'bg-slate-700' : 'bg-base-200'}`}>
                         <tr>
                             <th>
                                 #

@@ -8,11 +8,14 @@ import { SiGoogleclassroom } from "react-icons/si";
 import useInstructor from '../hook/useInstructor';
 import { GiTeacher } from "react-icons/gi";
 import useAuth from '../hook/useAuth';
+import { BsPersonAdd } from "react-icons/bs";
+import { BiListCheck } from "react-icons/bi";
+import { MdOutlinePayments } from "react-icons/md";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
     const [isInstructor] = useInstructor()
-    const { user } = useAuth()
+    const { user, theme } = useAuth()
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -25,7 +28,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-72 h-full bg-base-200 text-base-content">
+                <ul className={`menu p-4 w-72 h-full text-base-content ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-200'}`}>
                     <div className={`avatar flex justify-center`}>
                         <div className="w-10 md:w-16 lg:w-24 rounded mb-2">
                             <img src={user?.photoURL} />
@@ -38,15 +41,15 @@ const Dashboard = () => {
                     <div className='lg:divider'></div>
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/manage-classes"><FaHome></FaHome> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manage-classes"><SiGoogleclassroom/> Manage Classes</NavLink></li>
                             <li><NavLink to="/dashboard/manage-users"><ImUsers /> Manage Users</NavLink></li>
                         </> : isInstructor ? <>
-                            <li><NavLink to="/dashboard/my-classes"><FaHome></FaHome> My Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/add-classes"><FaHome></FaHome> Add Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/my-classes"><SiGoogleclassroom/> My Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/add-classes"><BsPersonAdd/> Add Classes</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/selected-classes"><SiGoogleclassroom /> Selected Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/enrolled-classes"><SiGoogleclassroom /> Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/dashboard/payment-history"><SiGoogleclassroom /> Payment History</NavLink></li>
+                            <li><NavLink to="/dashboard/enrolled-classes"> <BiListCheck size='1.4em'/> Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/payment-history"><MdOutlinePayments /> Payment History</NavLink></li>
                         </>
                     }
                     <div className="divider"></div>

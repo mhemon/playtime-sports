@@ -6,6 +6,8 @@ import useAuth from '../../hook/useAuth';
 import { Fade } from 'react-awesome-reveal';
 import Swal from 'sweetalert2';
 
+
+
 const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure()
     const { theme } = useAuth()
@@ -106,7 +108,7 @@ const ManageClasses = () => {
                         <div className="card-actions justify-end">
                             <button disabled={classItem.status === 'approved' || classItem.status === 'denied'} onClick={() => handleApprove(classItem)} className="btn btn-sm my-custom-btn">Approve</button>
                             <button disabled={classItem.status === 'approved' || classItem.status === 'denied'} onClick={() => handleDeny(classItem)} className="btn btn-sm my-custom-btn">Denied</button>
-                            <button onClick={() => handleFeedback(classItem)} className="btn btn-sm my-custom-btn">Send feedback</button>
+                            <button disabled={classItem.status !== 'denied'} onClick={() => handleFeedback(classItem)} className="btn btn-sm my-custom-btn">Send feedback</button>
                             {classItem.feedback.length > 0 && <div className='w-full'>
                                 <p className='text-center text-lg font-semibold mt-3'>FeedBack</p>
                                 <div className="divider"></div> 

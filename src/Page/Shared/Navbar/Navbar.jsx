@@ -60,7 +60,7 @@ const Navbar = () => {
         </Fade>
     </>
     return (
-        <div className={`navbar sticky z-10 bg-base-100 ${theme === 'dark' ? 'dark-mode' : ''}`}>
+        <div className={`navbar sticky z-10 ${theme === 'dark' ? 'dark-mode bg-slate-700' : 'bg-base-100'}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

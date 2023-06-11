@@ -1,10 +1,12 @@
 import React from 'react';
 import footerLogo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hook/useAuth';
 
 const Footer = () => {
+    const {theme} = useAuth()
     return (
-        <footer className="footer footer-center p-10 bg-base-300 text-base-content">
+        <footer className={`footer footer-center p-10 text-base-content ${theme === 'dark' ? 'bg-slate-700' : 'bg-base-300'}`}>
             <div>
                 <div className='w-[50px] h-[50px]'>
                     <img src={footerLogo} alt="" />
