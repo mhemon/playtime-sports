@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useAxiosSecure from '../../hook/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Fade } from 'react-awesome-reveal';
@@ -7,14 +7,23 @@ import useAuth from '../../hook/useAuth';
 
 const Instructors = () => {
     const {theme} = useAuth()
+    // const [instructors, setInstructors] = useState([])
     const [axiosSecure] = useAxiosSecure();
-    const { isLoading, refetch, data: instructors = [] } = useQuery({
+    const { isLoading, data: instructors = [] } = useQuery({
         queryKey: ['instructors'],
         queryFn: async () => {
             const res = await axiosSecure('/instructors');
             return res.data;
         },
     });
+
+    // useEffect(() => {
+    //     fetch('https://playtime-sports-server.vercel.app/instructors')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setInstructors(data)
+    //     })
+    // }, [])
 
     if (isLoading) {
         return <Loading/>

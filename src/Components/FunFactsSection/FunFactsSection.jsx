@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../hook/useAuth';
-import { Fade, Slide } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
 
 const FunFactsSection = () => {
     const [funFacts, setFunFacts] = useState([]);
     const [currentFactIndex, setCurrentFactIndex] = useState(0);
     const { theme } = useAuth()
+    
     useEffect(() => {
-        // Simulating data retrieval from the server
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/facts');
-                const data = await response.json();
-                setFunFacts(data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
+        fetch('https://playtime-sports-server.vercel.app/facts')
+        .then(res => res.json())
+        .then(data => setFunFacts(data))
     }, []);
 
     const handleNextFactClick = () => {

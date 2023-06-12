@@ -13,13 +13,13 @@ const Home = () => {
     const [popularInstructor, setPopularInstructor] = useState([])
     const { theme } = useAuth()
     useEffect(() => {
-        fetch('http://localhost:5000/popular-classes')
+        fetch('https://playtime-sports-server.vercel.app/popular-classes')
             .then(res => res.json())
             .then(data => setPopularClasses(data))
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:5000/popular-instructor')
+        fetch('https://playtime-sports-server.vercel.app/popular-instructor')
             .then(res => res.json())
             .then(data => setPopularInstructor(data))
     }, [])

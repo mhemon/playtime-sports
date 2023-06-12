@@ -67,7 +67,7 @@ const ManageClasses = () => {
             confirmButtonText: 'Submit',
             showLoaderOnConfirm: true,
             preConfirm: (feedbackText) => {
-                const url = `http://localhost:5000/add-feedback/${classItem._id}`;
+                const url = `https://playtime-sports-server.vercel.app/add-feedback/${classItem._id}`;
 
                 return axiosSecure.patch(url, { feedback: feedbackText })
                     .then(res => {
