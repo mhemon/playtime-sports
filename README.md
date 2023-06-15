@@ -26,7 +26,7 @@ Welcome to PlayTime Sports! This client-side readme provides an overview of our 
 - **CSS Framework**: Tailwind CSS
 - **HTTP Library**: Axios
 - **Animation Library**: Lottie, Framer Motion, React Awesome Reveal
-- **Data Fetching**: Tenstack Query
+- **Data Fetching**: Tanstack Query
 - **Payment Gateway**: Stripe
 - **Backend Framework**: Express JS
 - **Database**: MongoDB
